@@ -1,0 +1,236 @@
+{
+  "info": {
+    "name": "Design Asset Manager API",
+    "_postman_id": "12345-abcde",
+    "description": "UTS Pemrograman Web Lanjutan - Full API Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"test\",\n  \"password\": \"123\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"test\",\n  \"password\": \"123\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/login",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["auth", "login"]
+        }
+      }
+    },
+
+    {
+      "name": "Category - Create (Protected)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories?name=Font",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["categories"],
+          "query": [
+            { "key": "name", "value": "Font" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Category - Get All",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["categories"]
+        }
+      }
+    },
+    {
+      "name": "Category - Get By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/1",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["categories", "1"]
+        }
+      }
+    },
+    {
+      "name": "Category - Update (Protected)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/1?name=Icon",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["categories", "1"],
+          "query": [
+            { "key": "name", "value": "Icon" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Category - Delete (Protected)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/1",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["categories", "1"]
+        }
+      }
+    },
+
+    {
+      "name": "Asset - Create (Protected)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Font Keren\",\n  \"file_url\": \"link\",\n  \"category_id\": 1\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/assets",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["assets"]
+        }
+      }
+    },
+    {
+      "name": "Asset - Get All",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/assets",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["assets"]
+        }
+      }
+    },
+    {
+      "name": "Asset - Get By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/assets/1",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["assets", "1"]
+        }
+      }
+    },
+    {
+      "name": "Asset - Update (Protected)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated\",\n  \"file_url\": \"link2\",\n  \"category_id\": 1\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/assets/1",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["assets", "1"]
+        }
+      }
+    },
+    {
+      "name": "Asset - Delete (Protected)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/assets/1",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["assets", "1"]
+        }
+      }
+    },
+
+    {
+      "name": "TEST - No Token (Should 401)",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://127.0.0.1:8000/assets",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["assets"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "ISI_TOKEN_DI_SINI"
+    }
+  ]
+}
